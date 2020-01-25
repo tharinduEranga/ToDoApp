@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ToDo</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
+    <string name="icon">icon_login</string>
+    <string name="no_account">No account? </string>
+    <string name="sign_uo">Sign Up</string>
+    <string name="log_out">Log Out</string>
+    <string name="hello_blank_fragment">Hello Blank 1</string>
+
+    <string name="btn_label1"> Fragment One </string>
+    <string name="btn_label2"> Fragment Two </string>
+    <string name="frag_two">Fragment Two</string>
+    <string name="frag_one">Fragment One</string>
+    <string name="fragments_btn_text">Fragments</string>
+</resources>
