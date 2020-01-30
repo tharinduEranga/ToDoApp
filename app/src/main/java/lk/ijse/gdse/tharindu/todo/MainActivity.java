@@ -8,6 +8,9 @@ import android.provider.BaseColumns;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
@@ -37,14 +40,35 @@ public class MainActivity extends AppCompatActivity {
         checkAuth(cursor);
 
 
-        Button frag_btn = findViewById(R.id.frag_btn);
-        frag_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FragmentActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Button frag_btn = findViewById(R.id.frag_btn);
+//        frag_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, FragmentActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        ScrollView scrollView = findViewById(R.id.scollView);
+        LinearLayout linearLayout = findViewById(R.id.scrollLinear);
+
+        Button[] buttons = new Button[20];
+
+//        RelativeLayout relativeLayout = new RelativeLayout(MainActivity.this);
+
+        int sum = 0;
+        for (int i = 1; i < 15; i++) {
+            buttons[i] = new Button(this);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                    (int) RelativeLayout.LayoutParams.WRAP_CONTENT, (int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+            params.leftMargin = 50;
+            params.topMargin = sum;
+            buttons[i].setText("Button " + i);
+            buttons[i].setLayoutParams(params);
+            linearLayout.addView(buttons[i]);
+            sum = sum + 100;
+        }
+
     }
 
     private void logOutBtnAction() {
@@ -134,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         // Define 'where' part of query.
         String selection = LoginAuthHandleStatements.FeedEntry.USERNAME + " LIKE ?";
         // Specify arguments in placeholder order.
-        String[] selectionArgs = { LOGIN_USERNAME };
+        String[] selectionArgs = {LOGIN_USERNAME};
         // Issue SQL statement.
         int deletedRows = db.delete(LoginAuthHandleStatements.FeedEntry.TABLE_NAME, selection, selectionArgs);
         goToLogin();
